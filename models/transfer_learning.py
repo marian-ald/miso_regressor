@@ -147,6 +147,10 @@ def tail(num_classes, input_shape):
     return marchitto_tail(num_classes, input_shape)
 
 
+def tail_regression(input_shape):
+    return marchitto_tail_regression(input_shape)
+
+
 def tail_vector(num_classes, input_shape):
     inp = Input(shape=input_shape)
     outp = Dropout(0.05)(inp)
@@ -177,7 +181,7 @@ def marchitto_tail(nb_classes, input_shape):
     # model.add(Dense(nb_classes, activation='softmax'))
     # return model
 
-def marchitto_tail_regression(nb_classes, input_shape):
+def marchitto_tail_regression(input_shape):
     inp = Input(shape=input_shape)
     outp = Dropout(0.05)(inp)
     outp = Dense(512, activation='relu')(outp)

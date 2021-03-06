@@ -91,6 +91,10 @@ def generate_tl_tail(params: dict, input_shape):
     model_tail = tail(params['num_classes'], input_shape)
     return model_tail
 
+def generate_tl_tail_regression(input_shape):
+    model_tail = tail_regression(input_shape)
+    return model_tail
+
 
 def generate_tl(params: dict):
     model_head = generate_tl_head(params)

@@ -403,22 +403,6 @@ def train_image_classification_model(params: dict, data_source: DataSource = Non
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def train_image_regression_model(params: dict, data_source: DataSource = None):
     K.clear_session()
 
@@ -538,7 +522,7 @@ def train_image_regression_model(params: dict, data_source: DataSource = None):
         # Model --------------------------------------------------------------------------------------------------------
         print("@ Generating tail")
         # Get  tail
-        model_tail = generate_tl_tail(params, [train_vector.shape[1], ])
+        model_tail = generate_tl_tail_regression([train_vector.shape[1], ])
         model_tail.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_squared_error'])
 
         # Generator ----------------------------------------------------------------------------------------------------
