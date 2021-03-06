@@ -403,7 +403,7 @@ def train_image_classification_model(params: dict, data_source: DataSource = Non
 
 
 
-def train_image_regression_model(params: dict, data_source: DataSource = None):
+def train_image_regression_model(params: dict, data_source: DataSource = None, files_list, files_labels):
     K.clear_session()
 
     config = tf.ConfigProto()
@@ -475,11 +475,7 @@ def train_image_regression_model(params: dict, data_source: DataSource = None):
     if data_source is None:
         data_source = DataSource()
         data_source.use_mmap = params['use_mmap']
-        data_source.set_source(input_dir,
-                               data_min_count,
-                               mapping=params['class_mapping'],
-                               min_count_to_others=params['data_map_others'],
-                               mmap_directory=params['mmap_directory'])
+        data_source.set_source_regression(files_list, files_labels)
         data_source.load_dataset(img_size=(img_height, img_width), img_type=img_type)
     data_source.split(data_split, seed)
 
