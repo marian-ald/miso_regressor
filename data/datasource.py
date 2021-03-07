@@ -485,19 +485,20 @@ class DataSource:
         # print(self.onehots)
         print(self.data_df['labels'])
 
-    def set_source_regression(file_paths, labels):
+    def set_source_regression(self, file_paths, labels):
         """
             file_paths: list of images paths
             labels: list of floats, one value for each file_path
         """
         short_filenames= []
 
-        for i in range(len(file_paths)):
+        for filename in file_paths:
             short_filenames.append(os.path.basename(filename))
 
         df = {"filenames": file_paths, "short_filenames": short_filenames, "cls": labels}
         self.data_df = pd.DataFrame(df)
-
+        self.cls = self.data_df['cls'].to_numpy()
+        self.onehots = self.cls
 
     @staticmethod
     def make_image_square(im):

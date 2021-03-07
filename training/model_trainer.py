@@ -403,7 +403,7 @@ def train_image_classification_model(params: dict, data_source: DataSource = Non
 
 
 
-def train_image_regression_model(params: dict, data_source: DataSource = None, files_list, files_labels):
+def train_image_regression_model(params: dict, data_source: DataSource = None, files_list=None, files_labels=None):
     K.clear_session()
 
     config = tf.ConfigProto()
@@ -543,7 +543,7 @@ def train_image_regression_model(params: dict, data_source: DataSource = None, f
             train_gen,
             steps_per_epoch=math.ceil(len(train_vector) // batch_size),
             validation_data=validation_data,
-            validation_steps=math.ceil(len(test_vector) // batch_size),
+            validation_steps=6,
             epochs=max_epochs,
             verbose=0,
             shuffle=False,
